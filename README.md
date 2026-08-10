@@ -2,6 +2,9 @@
 
 This repository contains the code and models for our E-Commerce Machine Learning Capstone project.
 
+## Notebook
+You can find the kaggle notebook here: https://www.kaggle.com/code/ziadkassem/brazilian-e-comm-tecktrek
+
 ## The Shared Phase (Team Foundation)
 Before splitting into individual models, the team must complete the **Shared Phase**. This ensures everyone is working from the same high-quality, preprocessed dataset (`clean_orders.csv`).
 
