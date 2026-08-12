@@ -1,61 +1,28 @@
-# E-Commerce Machine Learning Capstone
+# Brazilian E-Commerce Machine Learning Capstone
 
-This repository contains the code and models for our E-Commerce Machine Learning Capstone project.
+## Overview
+This repository contains the Machine Learning Capstone project predicting business outcomes for a Brazilian E-Commerce dataset (Olist). The project follows a strict machine learning pipeline including data auditing, preprocessing, feature engineering, exploratory data analysis (EDA), and machine learning model training.
 
-## Notebook
-You can find the kaggle notebook here: https://www.kaggle.com/code/ziadkassem/brazilian-e-comm-tecktrek
+## Folder Structure
+- `data/` : Contains the raw dataset and the final `clean_orders.csv` after the shared preprocessing phase.
+- `notebook/` : Contains the Jupyter Notebooks for analysis and model training.
+- `model/` : Contains the final serialized `.pkl` file of the best tuned machine learning model.
+- `visuals/` : Contains exported PNGs of key EDA and evaluation charts.
+- `reports/` : Contains the final `model_comparison.csv` summarizing the performance of the 4 tested algorithms.
 
-## The Shared Phase (Team Foundation)
-Before splitting into individual models, the team must complete the **Shared Phase**. This ensures everyone is working from the same high-quality, preprocessed dataset (`clean_orders.csv`).
+## Shared Phase (Completed)
+1. **Data Audit:** Analyzed missing values, hidden nulls, and exact duplicates.
+2. **Data Cleaning:** Standardized text, fixed data types, and enforced null handling rules.
+3. **Feature Engineering:** Calculated net revenue, delivery delays, pricing gaps, and customer age groups.
+4. **EDA:** Target distributions and correlation analysis.
 
-### Step 1: Load & Preserve
-* **Goal:** Import the data safely.
-* **Tasks:** 
-  * Read `raw_orders.csv` from the `data/` folder.
-  * Preserve a raw copy of the dataframe.
-  * Check `.shape`, `.head()`, and `.tail()`.
-  * Set a global random seed for reproducibility.
+## Individual Phase (Pending)
+*Each team member will branch out to choose ONE of the following 5 models:*
+1. Return Prediction (Classification)
+2. Delivery Delay Prediction (Classification)
+3. Customer Rating Prediction (Regression)
+4. Customer Segmentation (Clustering)
+5. Revenue Prediction (Regression)
 
-### Step 2: Data Audit
-* **Goal:** Understand data quality issues.
-* **Tasks:**
-  * Run `.info()` and `.describe()` for all columns.
-  * Calculate missing value counts and percentages.
-  * Check for exact row duplicates and duplicate `Order_ID`s.
-  * Identify hidden nulls (e.g., `'NA'`, `'N/A'`, `'Null'`, `'-'`, or blanks).
-
-### Step 3: Data Preprocessing (Cleaning & Encoding)
-* **Goal:** Fix the issues identified in the audit.
-* **Tasks:**
-  * Clean column names to `snake_case`.
-  * Fix data types (convert dates to `datetime`, numerics to `numeric`, categoricals to `category`).
-  * Standardize text labels (e.g., unify casing, merge `Online/online` -> `Online`).
-  * Standardize binary/category labels (Yes/No, gender, branch).
-  * Validate business rules (prices > 0, qty > 0, discount scale 0-100 vs 0-1).
-  * **Important Null Rules:**
-    * Return fields (Returned=No) -> keep null (not an error).
-    * Rating null -> keep null (no review).
-    * Campaign null -> fill with `'No Campaign'`.
-
-### Step 4: Feature Engineering
-* **Goal:** Create derived features to improve model performance.
-* **Tasks:**
-  * **Revenue:** Calculate `gross_revenue`, `discount_amount`, and `net_revenue`.
-  * **Delivery:** Calculate `delivery_delay` and binary `is_late`.
-  * **Pricing:** Calculate `price_gap` against competitors and binary `is_pricier`.
-  * **Time:** Extract `order_month`, `order_weekday`, `order_hour`, and binary `is_weekend`.
-  * **Customer:** Bin ages into `age_group` (U18, 18-25, 26-35, 36-45, 46-55, 55+).
-  * **Stock:** Create `low_stock_flag`.
-
-### Step 5: Shared EDA (Exploratory Data Analysis)
-* **Goal:** Understand overall business trends before modeling.
-* **Tasks:**
-  * Check unique values and numeric quartiles.
-  * Plot Correlation heatmap for numeric features.
-  * Plot Orders over time (line chart).
-  * Plot Revenue by category, channel, and area.
-
-### 💾 Export
-Once Step 5 is complete, the team will export this unified dataframe as **`data/clean_orders.csv`**. 
-
-Every team member will then load `clean_orders.csv` into their individual Jupyter Notebooks to begin their unique model (Steps 6-10: Target Definition, Split, Encode, Train, Tune, Evaluate).
+## Instructions
+To run this project, start with the Jupyter notebook located in the `notebook/` folder. Ensure all dependencies are installed before executing the cells.
